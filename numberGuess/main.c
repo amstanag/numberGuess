@@ -19,11 +19,26 @@ int main(int argc, const char * argv[]) {
     scanf("%d", &max);
     
     //create a random number between 0 and max
-    srand(time(0));
+    srand(time(NULL));
     random = (rand() % (max + 1));
     
-//    printf("%d\n", random);
+    //scan for the first guess
+    printf("Try to guess the random number!\n");
+    scanf("%d", &guess);
     
-//    printf("Hello, World!\n");
+    //keep scanning for guesses until the right number is found
+    while(1){
+        if(guess > random){
+            printf("Your guess is too high!\n");
+            scanf("%d", &guess);
+        }else if(guess < random){
+            printf("Your guess is too low\n");
+            scanf("%d", &guess);
+        }else if (guess == random){
+            printf("Correct! Your guess was %d, and the random number was %d\n", guess, random);
+            exit(1);
+        }
+    }
+
     return 0;
 }
